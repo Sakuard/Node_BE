@@ -1,6 +1,6 @@
 const http = require('http');
 const cors = require('./cors');
-const env = require('./config');
+const env = require('./config/config');
 
 const start = function(routes) {
   const requestListener = function(req, res) {

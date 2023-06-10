@@ -1,5 +1,5 @@
 console.log(`import db_setting.js`)
-const SysDbsetting = require('./config');
+const SysDbsetting = require('./config/config');
 
 const SysDB = SysDbsetting.SysDB;
 
