@@ -1,5 +1,5 @@
-// update this file name into 'config.js'
-console.log(`import config.js`)
+// update this file name into 'config.ts'
+console.log(`import config.ts`)
 
 const PORT = 8080; // update me
 const SysDB={
@@ -10,4 +10,4 @@ const SysDB={
   PORT:'port' // update me
 }
 
-module.exports = {PORT, SysDB}
+export default {PORT, SysDB};
