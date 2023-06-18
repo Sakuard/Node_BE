@@ -1,13 +1,16 @@
-const http = require('http');
+'use strinct';
 const cors = require('./cors');
-const env = require('./config/config');
 const test = require('./test');
 const server = require('./server');
-const sql = require('./db_setting');
+const db_mssql = require('./config/db_mssql')
+const trade = require('./trade')
 
 const req = {
   '/test': test.test,
-  '/server/test2': test.test2
+  '/server/test2': test.test2,
+  '/server/cq': db_mssql.CommonQuery,
+  '/sys/trade/login': trade.DoTradeLogin,
+  '/trade/account/getdata': trade.GetAccountData
 }
 
 server.start(req);

@@ -1,21 +1,23 @@
-console.log(`import cors.js`)
+'use strinct';
+console.log(`import cors.js ...`)
 
 const whiteLists = [
-  // 'http://127.0.0.1:5173',
-  // 'http://localhost:5173'
+  'http://127.0.0.1:5173',
+  'http://localhost:5173'
 ]
-exports.whiteLists = whiteLists;
 
-exports.handleCors = function (req, res, whiteLists) {
-  console.log(`Executing handleCors()...`)
+const handleCors = (req, res, whiteLists) => {
+  // console.log(`Executing handleCors()...`)
   const origin = req.headers.origin;
   if (whiteLists.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
+    res.setHeader('Access-Control-Allow-Headers', origin);
   }
-  res.setHeader('Access-Control-Allow-Origin', origin);
-  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
-  res.setHeader('Access-Control-Allow-Headers', '*');
-  // Handle Preflight
+  else{
+    return;
+  }
+  // res.setHeader('Access-Control-Allow-Origin', origin ?? '');
   if (req.method === 'OPTIONS') {
     res.writeHead(200);
     res.end();
@@ -23,4 +25,5 @@ exports.handleCors = function (req, res, whiteLists) {
   }
 }
 
-// module.exports = { whiteLists, handleCors };
+// export default { whiteLists, handleCors };
+module.exports = { whiteLists, handleCors };
